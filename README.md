@@ -1,4 +1,4 @@
-# 🛵 Swiggy Data Engineering Platform (Lambda Architecture)
+# Swiggy Data Engineering Platform (Lambda Architecture)
 
 An end-to-end, production-grade Data Engineering platform simulating real-time order processing, driver tracking, and business analytics for a food delivery service (inspired by Swiggy). 
 
@@ -6,7 +6,7 @@ This platform implements a hybrid **Lambda Architecture** (combining a real-time
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 ```mermaid
 flowchart TD
@@ -61,7 +61,7 @@ flowchart TD
 
 ---
 
-## ⚡ Tech Stack & Design Rationale
+## Tech Stack & Design Rationale
 
 | Layer | Technology | Why This Choice? |
 | :--- | :--- | :--- |
@@ -76,7 +76,7 @@ flowchart TD
 
 ---
 
-## 📐 Data Modeling & Architecture
+## Data Modeling & Architecture
 
 ### 1. The Medallion Architecture (Lakehouse)
 * **Bronze (Raw / Landed Data):**
@@ -106,7 +106,7 @@ In high-throughput food delivery streams, malformed payloads (missing order IDs,
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 de_mini_proj/
@@ -142,7 +142,7 @@ de_mini_proj/
 
 ---
 
-## 🚀 Step-by-Step Setup & Execution
+## Step-by-Step Setup & Execution
 
 ### Prerequisites
 * **Docker Desktop** (with WSL2 backend enabled on Windows).
@@ -277,7 +277,7 @@ Connect Superset to DuckDB and explore the analytics:
 
 ---
 
-## 💡 Engineering Challenges & Hardware Optimization
+## Engineering Challenges & Hardware Optimization
 
 Building a multi-engine Data Engineering stack (Kafka + Spark + Delta + dbt + DuckDB + Airflow + Superset) on an **8GB RAM workstation** presents acute resource constraints. Here is how they were solved:
 
@@ -292,7 +292,7 @@ Building a multi-engine Data Engineering stack (Kafka + Spark + Delta + dbt + Du
 
 ---
 
-## 🛠️ Maintenance & Cleanup
+## Maintenance & Cleanup
 
 To stop all containers and release system memory:
 ```bash
