@@ -169,15 +169,41 @@ docker compose ps
 
 ---
 
-### 2. Seed the OLTP Database
-Populate PostgreSQL with synthetic restaurants, customers, and historical order data:
+### 2. Initialize the Environment (Run once)
+Since we use a lightweight generic PySpark image to save RAM, you need to install the project dependencies and initialize the Airflow database on the first run. 
+Run these commands in your terminal:
 ```bash
+# 1. Install Python dependencies inside the Jupyter container
+docker compose exec jupyter pip install -r /home/jovyan/work/requirements.txt
+
+# 2. Initialize Airflow and create an Admin user
+docker compose exec jupyter bash -c "airflow db init && airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin"
+
+# 3. Create a symlink so Airflow can find your DAGs
+docker compose exec jupyter bash -c "mkdir -p /home/jovyan/airflow && ln -sf /home/jovyan/work/05_orchestration /home/jovyan/airflow/dags"
+
+# 4. Create a symlink for DuckDB to access the Delta Lake volume correctly
+docker compose exec -u root jupyter bash -c "mkdir -p /app && ln -sf /home/jovyan/work/data/delta_lake /app/delta_lake"
+
+# 5. Start Airflow Webserver and Scheduler in the background
+docker compose exec -d jupyter airflow webserver
+docker compose exec -d jupyter airflow scheduler
+```
+
+### 3. Seed the OLTP Database
+Populate PostgreSQL with the schema, synthetic restaurants, customers, and historical order data:
+```bash
+# Apply Schema
+Get-Content 01_simulator\schema.sql | docker compose exec -T postgres psql -U swiggy_user -d swiggy
+
+# Seed Data
 docker compose exec jupyter python /home/jovyan/work/01_simulator/seed_data.py
+docker compose exec jupyter python /home/jovyan/work/01_simulator/batch_seed_orders.py
 ```
 
 ---
 
-### 3. Run the Batch Pipeline
+### 4. Run the Batch Pipeline
 
 #### Option A: Automated via Airflow (Recommended)
 1. Open the Airflow UI at [http://localhost:8082](http://localhost:8082).
@@ -203,24 +229,25 @@ docker compose exec jupyter bash -c "cd /home/jovyan/work/04_transform && dbt ru
 
 ---
 
-### 4. Run the Real-Time Streaming Pipeline
-
-#### Step 4.1: Start the Kafka Producer
+### 5. Run the Real-Time Streaming Pipeline
+    
+#### Step 5.1: Start the Kafka Producer
 Stream live synthetic food orders into the `orders.events` Redpanda topic:
 ```bash
 docker compose exec -d jupyter python /home/jovyan/work/03_streaming/stream_producer.py
 ```
 *(You can monitor live messages entering the broker via Redpanda Console at [http://localhost:8081](http://localhost:8081))*
 
-#### Step 4.2: Start the PySpark Structured Streaming Consumer
+#### Step 5.2: Start the PySpark Structured Streaming Consumer
 Consume orders, execute schema validation, and route clean events vs DLQ:
 ```bash
 docker compose exec -d jupyter /usr/local/spark/bin/spark-submit \
   --packages io.delta:delta-spark_2.12:3.0.0,org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1 \
   /home/jovyan/work/03_streaming/spark_streaming_job.py
 ```
+*(Note: Corrupted records are written to Delta Lake AND published to the `orders.dlq` Redpanda topic).*
 
-#### Step 4.3: Expose Live Delta Tables in DuckDB
+#### Step 5.3: Expose Live Delta Tables in DuckDB
 Run the registration script to mount the Delta tables as DuckDB views:
 ```bash
 docker compose exec jupyter python /home/jovyan/work/03_streaming/create_superset_views.py
@@ -228,7 +255,7 @@ docker compose exec jupyter python /home/jovyan/work/03_streaming/create_superse
 
 ---
 
-### 5. Superset Dashboards & Visualizations
+### 6. Superset Dashboards & Visualizations
 
 Connect Superset to DuckDB and explore the analytics:
 1. Log into [http://localhost:8088](http://localhost:8088) using `admin` / `admin`.

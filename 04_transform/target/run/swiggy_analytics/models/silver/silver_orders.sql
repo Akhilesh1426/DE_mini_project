@@ -1,10 +1,11 @@
 
+  
+    
     
 
     create  table
       "swiggy"."main"."silver_orders__dbt_tmp"
   
-    
     as (
       
 
@@ -30,5 +31,5 @@ SELECT
 FROM deduplicated
 WHERE rn = 1
     );
-    
+  
   

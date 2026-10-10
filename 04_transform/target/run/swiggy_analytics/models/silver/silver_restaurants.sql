@@ -1,10 +1,11 @@
 
+  
+    
     
 
     create  table
       "swiggy"."main"."silver_restaurants__dbt_tmp"
   
-    
     as (
       
 
@@ -20,5 +21,5 @@ SELECT
     is_active
 FROM raw_rest
     );
-    
+  
   

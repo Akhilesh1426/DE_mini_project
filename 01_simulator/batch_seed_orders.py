@@ -4,7 +4,7 @@ import uuid
 from datetime import datetime, timedelta
 
 PG_CONFIG = {
-    "host": "127.0.0.1", "port": 5433,
+    "host": "postgres", "port": 5432,
     "dbname": "swiggy", "user": "swiggy_user", "password": "swiggy_pass"
 }
 

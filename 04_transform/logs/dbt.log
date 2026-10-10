@@ -4516,3 +4516,874 @@ alter table "swiggy"."main"."fact_orders__dbt_tmp" rename to "fact_orders"
 [0m16:02:05.905431 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d5e834c3190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d5e834c3250>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d5e835be510>]}
 [0m16:02:05.906565 [debug] [MainThread]: Flushing usage events
 [0m16:02:07.102937 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m20:26:58.096411 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa5087df50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa52d36e50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa50688050>]}
+
+
+============================== 20:26:58.101603 | 534329a4-05c2-4ea9-8b58-8212748b0f23 ==============================
+[0m20:26:58.101603 [info ] [MainThread]: Running with dbt=1.11.15
+[0m20:26:58.102925 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'use_experimental_parser': 'False', 'profiles_dir': '.', 'log_cache_events': 'False', 'fail_fast': 'False', 'quiet': 'False', 'target_path': 'None', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'debug': 'False', 'static_parser': 'True', 'invocation_command': 'dbt run --profiles-dir .', 'indirect_selection': 'eager', 'warn_error': 'None', 'version_check': 'True', 'log_path': '/home/jovyan/work/04_transform/logs', 'write_json': 'True', 'introspect': 'True', 'no_print': 'None', 'printer_width': '80', 'empty': 'False'}
+[0m20:26:58.704121 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa505c52d0>]}
+[0m20:26:58.765518 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa52d46e50>]}
+[0m20:26:58.767470 [info ] [MainThread]: Registered adapter: duckdb=1.8.2
+[0m20:26:58.852019 [debug] [MainThread]: checksum: 810725a07b286a161cb6a02f5214572f3ba8aa5d584b5e37ea30d4a281c3d3a5, vars: {}, profile: , target: , version: 1.11.15
+[0m20:26:58.943197 [debug] [MainThread]: Failed to load parsed file from disk at /home/jovyan/work/04_transform/target/partial_parse.msgpack: Field "flat_graph" of type Dict[str, Any] in Manifest has invalid value None
+[0m20:26:58.945538 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa5153ebd0>]}
+[0m20:27:00.233569 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa48bbe410>]}
+[0m20:27:00.311146 [debug] [MainThread]: Wrote artifact WritableManifest to /home/jovyan/work/04_transform/target/manifest.json
+[0m20:27:00.317677 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/jovyan/work/04_transform/target/semantic_manifest.json
+[0m20:27:00.342869 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa48159710>]}
+[0m20:27:00.344261 [info ] [MainThread]: Found 5 models, 467 macros
+[0m20:27:00.345607 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa50c1c910>]}
+[0m20:27:00.348298 [info ] [MainThread]: 
+[0m20:27:00.349780 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m20:27:00.350835 [info ] [MainThread]: 
+[0m20:27:00.352075 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m20:27:00.358544 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_swiggy'
+[0m20:27:00.401684 [debug] [ThreadPool]: Using duckdb connection "list_swiggy"
+[0m20:27:00.403038 [debug] [ThreadPool]: On list_swiggy: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "connection_name": "list_swiggy"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where catalog_name = '"swiggy"'
+    
+  
+  
+[0m20:27:00.404059 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:27:00.734662 [debug] [ThreadPool]: SQL status: OK in 0.331 seconds
+[0m20:27:00.736921 [debug] [ThreadPool]: On list_swiggy: Close
+[0m20:27:00.741540 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_swiggy, now create_swiggy_main)
+[0m20:27:00.742763 [debug] [ThreadPool]: Creating schema "database: "swiggy"
+schema: "main"
+"
+[0m20:27:00.750149 [debug] [ThreadPool]: Using duckdb connection "create_swiggy_main"
+[0m20:27:00.751394 [debug] [ThreadPool]: On create_swiggy_main: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "connection_name": "create_swiggy_main"} */
+
+    
+        select type from duckdb_databases()
+        where database_name='swiggy'
+        and type='sqlite'
+    
+  
+[0m20:27:00.752378 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m20:27:00.972554 [debug] [ThreadPool]: SQL status: OK in 0.220 seconds
+[0m20:27:00.975201 [debug] [ThreadPool]: Using duckdb connection "create_swiggy_main"
+[0m20:27:00.976108 [debug] [ThreadPool]: On create_swiggy_main: BEGIN
+[0m20:27:00.977438 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m20:27:00.978397 [debug] [ThreadPool]: Using duckdb connection "create_swiggy_main"
+[0m20:27:00.979252 [debug] [ThreadPool]: On create_swiggy_main: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "connection_name": "create_swiggy_main"} */
+
+    
+    
+        create schema if not exists "swiggy"."main"
+    
+[0m20:27:00.980511 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m20:27:00.982065 [debug] [ThreadPool]: On create_swiggy_main: COMMIT
+[0m20:27:00.983044 [debug] [ThreadPool]: Using duckdb connection "create_swiggy_main"
+[0m20:27:00.983927 [debug] [ThreadPool]: On create_swiggy_main: COMMIT
+[0m20:27:00.985376 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m20:27:00.986409 [debug] [ThreadPool]: On create_swiggy_main: Close
+[0m20:27:00.994664 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_swiggy_main, now list_swiggy_main)
+[0m20:27:01.000883 [debug] [ThreadPool]: Using duckdb connection "list_swiggy_main"
+[0m20:27:01.001946 [debug] [ThreadPool]: On list_swiggy_main: BEGIN
+[0m20:27:01.002792 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m20:27:01.200887 [debug] [ThreadPool]: SQL status: OK in 0.198 seconds
+[0m20:27:01.202241 [debug] [ThreadPool]: Using duckdb connection "list_swiggy_main"
+[0m20:27:01.203430 [debug] [ThreadPool]: On list_swiggy_main: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "connection_name": "list_swiggy_main"} */
+select
+      'swiggy' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where table_schema = 'main'
+    and table_catalog = 'swiggy'
+  
+[0m20:27:01.239036 [debug] [ThreadPool]: SQL status: OK in 0.034 seconds
+[0m20:27:01.241535 [debug] [ThreadPool]: On list_swiggy_main: ROLLBACK
+[0m20:27:01.243272 [debug] [ThreadPool]: Failed to rollback 'list_swiggy_main'
+[0m20:27:01.244031 [debug] [ThreadPool]: On list_swiggy_main: Close
+[0m20:27:01.249055 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa48de3b90>]}
+[0m20:27:01.250051 [debug] [MainThread]: Using duckdb connection "master"
+[0m20:27:01.250833 [debug] [MainThread]: On master: BEGIN
+[0m20:27:01.251564 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:27:01.461457 [debug] [MainThread]: SQL status: OK in 0.210 seconds
+[0m20:27:01.462898 [debug] [MainThread]: On master: COMMIT
+[0m20:27:01.463904 [debug] [MainThread]: Using duckdb connection "master"
+[0m20:27:01.464934 [debug] [MainThread]: On master: COMMIT
+[0m20:27:01.466241 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m20:27:01.467129 [debug] [MainThread]: On master: Close
+[0m20:27:01.475336 [debug] [Thread-1 (]: Began running node model.swiggy_analytics.silver_historical_orders
+[0m20:27:01.475795 [debug] [Thread-2 (]: Began running node model.swiggy_analytics.silver_orders
+[0m20:27:01.476193 [debug] [Thread-3 (]: Began running node model.swiggy_analytics.silver_restaurants
+[0m20:27:01.477101 [info ] [Thread-1 (]: 1 of 5 START sql table model main.silver_historical_orders ..................... [RUN]
+[0m20:27:01.478039 [info ] [Thread-2 (]: 2 of 5 START sql table model main.silver_orders ................................ [RUN]
+[0m20:27:01.478917 [info ] [Thread-3 (]: 3 of 5 START sql table model main.silver_restaurants ........................... [RUN]
+[0m20:27:01.479893 [debug] [Thread-1 (]: Acquiring new duckdb connection 'model.swiggy_analytics.silver_historical_orders'
+[0m20:27:01.480855 [debug] [Thread-2 (]: Acquiring new duckdb connection 'model.swiggy_analytics.silver_orders'
+[0m20:27:01.481726 [debug] [Thread-3 (]: Acquiring new duckdb connection 'model.swiggy_analytics.silver_restaurants'
+[0m20:27:01.482503 [debug] [Thread-1 (]: Began compiling node model.swiggy_analytics.silver_historical_orders
+[0m20:27:01.483315 [debug] [Thread-2 (]: Began compiling node model.swiggy_analytics.silver_orders
+[0m20:27:01.484097 [debug] [Thread-3 (]: Began compiling node model.swiggy_analytics.silver_restaurants
+[0m20:27:01.491659 [debug] [Thread-1 (]: Writing injected SQL for node "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:01.494481 [debug] [Thread-2 (]: Writing injected SQL for node "model.swiggy_analytics.silver_orders"
+[0m20:27:01.497369 [debug] [Thread-3 (]: Writing injected SQL for node "model.swiggy_analytics.silver_restaurants"
+[0m20:27:01.503467 [debug] [Thread-1 (]: Began executing node model.swiggy_analytics.silver_historical_orders
+[0m20:27:01.504363 [debug] [Thread-2 (]: Began executing node model.swiggy_analytics.silver_orders
+[0m20:27:01.513591 [debug] [Thread-3 (]: Began executing node model.swiggy_analytics.silver_restaurants
+[0m20:27:01.680992 [debug] [Thread-1 (]: Writing runtime sql for node "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:01.686505 [debug] [Thread-3 (]: Writing runtime sql for node "model.swiggy_analytics.silver_restaurants"
+[0m20:27:01.694735 [debug] [Thread-2 (]: Writing runtime sql for node "model.swiggy_analytics.silver_orders"
+[0m20:27:01.715908 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:01.727716 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:01.729594 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: BEGIN
+[0m20:27:01.737817 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:01.746952 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: BEGIN
+[0m20:27:01.753803 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m20:27:01.761018 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: BEGIN
+[0m20:27:01.763608 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m20:27:01.769696 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m20:27:02.221732 [debug] [Thread-3 (]: SQL status: OK in 0.458 seconds
+[0m20:27:02.223541 [debug] [Thread-1 (]: SQL status: OK in 0.470 seconds
+[0m20:27:02.225046 [debug] [Thread-2 (]: SQL status: OK in 0.455 seconds
+[0m20:27:02.237018 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:02.247988 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:02.255096 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:02.275373 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_restaurants"} */
+
+  
+    
+    
+
+    create  table
+      "swiggy"."main"."silver_restaurants__dbt_tmp"
+  
+    as (
+      
+
+WITH raw_rest AS (
+    SELECT * FROM delta_scan('../data/delta_lake/bronze/restaurants')
+)
+SELECT 
+    restaurant_id,
+    name,
+    cuisine_type,
+    city,
+    CAST(avg_rating AS DOUBLE) as avg_rating,
+    is_active
+FROM raw_rest
+    );
+  
+  
+[0m20:27:02.291984 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_historical_orders"} */
+
+  
+    
+    
+
+    create  table
+      "swiggy"."main"."silver_historical_orders__dbt_tmp"
+  
+    as (
+      
+
+WITH historical AS (
+    SELECT * FROM delta_scan('../data/delta_lake/bronze/historical_orders')
+)
+SELECT 
+    order_id,
+    customer_id,
+    restaurant_id,
+    status,
+    CAST(total_amount AS DOUBLE) as total_amount,
+    delivery_address,
+    CAST(placed_at AS TIMESTAMP) as event_timestamp
+FROM historical
+    );
+  
+  
+[0m20:27:02.303191 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_orders"} */
+
+  
+    
+    
+
+    create  table
+      "swiggy"."main"."silver_orders__dbt_tmp"
+  
+    as (
+      
+
+WITH raw_orders AS (
+    SELECT * FROM delta_scan('../data/delta_lake/bronze/orders')
+),
+deduplicated AS (
+    SELECT 
+        *,
+        ROW_NUMBER() OVER(PARTITION BY order_id ORDER BY timestamp DESC) as rn
+    FROM raw_orders
+)
+SELECT 
+    event_id,
+    event_type,
+    CAST(timestamp AS TIMESTAMP) AS event_timestamp,
+    order_id,
+    customer_id,
+    restaurant_id,
+    total_amount,
+    status,
+    delivery_address
+FROM deduplicated
+WHERE rn = 1
+    );
+  
+  
+[0m20:27:02.774603 [debug] [Thread-2 (]: SQL status: OK in 0.455 seconds
+[0m20:27:02.790985 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:02.792891 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_orders"} */
+alter table "swiggy"."main"."silver_orders" rename to "silver_orders__dbt_backup"
+[0m20:27:02.795674 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m20:27:02.803890 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:02.806120 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_orders"} */
+alter table "swiggy"."main"."silver_orders__dbt_tmp" rename to "silver_orders"
+[0m20:27:02.809301 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m20:27:02.834557 [debug] [Thread-1 (]: SQL status: OK in 0.519 seconds
+[0m20:27:02.847371 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: COMMIT
+[0m20:27:02.851379 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:02.852200 [debug] [Thread-3 (]: SQL status: OK in 0.541 seconds
+[0m20:27:02.853154 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:02.854144 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_historical_orders"} */
+alter table "swiggy"."main"."silver_historical_orders" rename to "silver_historical_orders__dbt_backup"
+[0m20:27:02.859219 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:02.860630 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: COMMIT
+[0m20:27:02.862660 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m20:27:02.863160 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_restaurants"} */
+alter table "swiggy"."main"."silver_restaurants" rename to "silver_restaurants__dbt_backup"
+[0m20:27:02.869103 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:02.872040 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m20:27:02.872881 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_historical_orders"} */
+alter table "swiggy"."main"."silver_historical_orders__dbt_tmp" rename to "silver_historical_orders"
+[0m20:27:02.873774 [debug] [Thread-2 (]: SQL status: OK in 0.009 seconds
+[0m20:27:02.878350 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:02.884769 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:02.885395 [debug] [Thread-1 (]: SQL status: OK in 0.006 seconds
+[0m20:27:02.886299 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_restaurants"} */
+alter table "swiggy"."main"."silver_restaurants__dbt_tmp" rename to "silver_restaurants"
+[0m20:27:02.887520 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_orders"} */
+drop table if exists "swiggy"."main"."silver_orders__dbt_backup" cascade
+[0m20:27:02.890283 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: COMMIT
+[0m20:27:02.892480 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m20:27:02.893574 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:02.894530 [debug] [Thread-2 (]: SQL status: OK in 0.002 seconds
+[0m20:27:02.896255 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: COMMIT
+[0m20:27:02.897251 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: COMMIT
+[0m20:27:02.900276 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: Close
+[0m20:27:02.901326 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:02.910090 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa2a66f050>]}
+[0m20:27:02.910856 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: COMMIT
+[0m20:27:02.913023 [info ] [Thread-2 (]: 2 of 5 OK created sql table model main.silver_orders ........................... [[32mOK[0m in 1.43s]
+[0m20:27:02.917214 [debug] [Thread-2 (]: Finished running node model.swiggy_analytics.silver_orders
+[0m20:27:02.936568 [debug] [Thread-1 (]: SQL status: OK in 0.034 seconds
+[0m20:27:02.942018 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:02.942701 [debug] [Thread-3 (]: SQL status: OK in 0.028 seconds
+[0m20:27:02.943576 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_historical_orders"} */
+drop table if exists "swiggy"."main"."silver_historical_orders__dbt_backup" cascade
+[0m20:27:02.947162 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:02.948937 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_restaurants"} */
+drop table if exists "swiggy"."main"."silver_restaurants__dbt_backup" cascade
+[0m20:27:02.950361 [debug] [Thread-1 (]: SQL status: OK in 0.002 seconds
+[0m20:27:02.952795 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: Close
+[0m20:27:02.953284 [debug] [Thread-3 (]: SQL status: OK in 0.003 seconds
+[0m20:27:02.954772 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa2a672310>]}
+[0m20:27:02.958429 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: Close
+[0m20:27:02.960125 [info ] [Thread-1 (]: 1 of 5 OK created sql table model main.silver_historical_orders ................ [[32mOK[0m in 1.47s]
+[0m20:27:03.031810 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa2a632b10>]}
+[0m20:27:03.033264 [debug] [Thread-1 (]: Finished running node model.swiggy_analytics.silver_historical_orders
+[0m20:27:03.035231 [info ] [Thread-3 (]: 3 of 5 OK created sql table model main.silver_restaurants ...................... [[32mOK[0m in 1.55s]
+[0m20:27:03.037426 [debug] [Thread-4 (]: Began running node model.swiggy_analytics.fact_orders
+[0m20:27:03.038555 [debug] [Thread-3 (]: Finished running node model.swiggy_analytics.silver_restaurants
+[0m20:27:03.040360 [info ] [Thread-4 (]: 4 of 5 START sql table model main.fact_orders .................................. [RUN]
+[0m20:27:03.042567 [debug] [Thread-1 (]: Began running node model.swiggy_analytics.dim_restaurants
+[0m20:27:03.043555 [debug] [Thread-4 (]: Acquiring new duckdb connection 'model.swiggy_analytics.fact_orders'
+[0m20:27:03.044978 [info ] [Thread-1 (]: 5 of 5 START sql table model main.dim_restaurants .............................. [RUN]
+[0m20:27:03.046267 [debug] [Thread-4 (]: Began compiling node model.swiggy_analytics.fact_orders
+[0m20:27:03.047547 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.swiggy_analytics.silver_historical_orders, now model.swiggy_analytics.dim_restaurants)
+[0m20:27:03.053912 [debug] [Thread-4 (]: Writing injected SQL for node "model.swiggy_analytics.fact_orders"
+[0m20:27:03.054973 [debug] [Thread-1 (]: Began compiling node model.swiggy_analytics.dim_restaurants
+[0m20:27:03.060846 [debug] [Thread-1 (]: Writing injected SQL for node "model.swiggy_analytics.dim_restaurants"
+[0m20:27:03.067086 [debug] [Thread-4 (]: Began executing node model.swiggy_analytics.fact_orders
+[0m20:27:03.073955 [debug] [Thread-4 (]: Writing runtime sql for node "model.swiggy_analytics.fact_orders"
+[0m20:27:03.074974 [debug] [Thread-1 (]: Began executing node model.swiggy_analytics.dim_restaurants
+[0m20:27:03.083445 [debug] [Thread-1 (]: Writing runtime sql for node "model.swiggy_analytics.dim_restaurants"
+[0m20:27:03.092152 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:03.094609 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: BEGIN
+[0m20:27:03.095799 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:03.097293 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m20:27:03.099329 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: BEGIN
+[0m20:27:03.102401 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:27:03.325443 [debug] [Thread-1 (]: SQL status: OK in 0.223 seconds
+[0m20:27:03.326096 [debug] [Thread-4 (]: SQL status: OK in 0.229 seconds
+[0m20:27:03.327207 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:03.328311 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:03.329559 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.dim_restaurants"} */
+
+  
+    
+    
+
+    create  table
+      "swiggy"."main"."dim_restaurants__dbt_tmp"
+  
+    as (
+      
+
+SELECT 
+    restaurant_id,
+    name as restaurant_name,
+    cuisine_type,
+    city,
+    avg_rating,
+    is_active
+FROM "swiggy"."main"."silver_restaurants"
+    );
+  
+  
+[0m20:27:03.330663 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.fact_orders"} */
+
+  
+    
+    
+
+    create  table
+      "swiggy"."main"."fact_orders__dbt_tmp"
+  
+    as (
+      
+
+WITH stream_orders AS (
+    SELECT order_id, customer_id, restaurant_id, total_amount, status, event_timestamp, 'streaming' as source
+    FROM "swiggy"."main"."silver_orders"
+),
+batch_orders AS (
+    SELECT order_id, customer_id, restaurant_id, total_amount, status, event_timestamp, 'batch' as source
+    FROM "swiggy"."main"."silver_historical_orders"
+)
+SELECT * FROM stream_orders
+UNION ALL
+SELECT * FROM batch_orders
+    );
+  
+  
+[0m20:27:03.341749 [debug] [Thread-1 (]: SQL status: OK in 0.010 seconds
+[0m20:27:03.345998 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:03.347271 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.dim_restaurants"} */
+alter table "swiggy"."main"."dim_restaurants" rename to "dim_restaurants__dbt_backup"
+[0m20:27:03.349212 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m20:27:03.353460 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:03.354064 [debug] [Thread-4 (]: SQL status: OK in 0.021 seconds
+[0m20:27:03.354808 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.dim_restaurants"} */
+alter table "swiggy"."main"."dim_restaurants__dbt_tmp" rename to "dim_restaurants"
+[0m20:27:03.359025 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:03.360617 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m20:27:03.361045 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.fact_orders"} */
+alter table "swiggy"."main"."fact_orders" rename to "fact_orders__dbt_backup"
+[0m20:27:03.363121 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: COMMIT
+[0m20:27:03.364545 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m20:27:03.364972 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:03.368278 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:03.369176 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: COMMIT
+[0m20:27:03.370054 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.fact_orders"} */
+alter table "swiggy"."main"."fact_orders__dbt_tmp" rename to "fact_orders"
+[0m20:27:03.373422 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m20:27:03.377436 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: COMMIT
+[0m20:27:03.381213 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:03.381776 [debug] [Thread-1 (]: SQL status: OK in 0.011 seconds
+[0m20:27:03.382566 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: COMMIT
+[0m20:27:03.385581 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:03.387301 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.dim_restaurants"} */
+drop table if exists "swiggy"."main"."dim_restaurants__dbt_backup" cascade
+[0m20:27:03.405988 [debug] [Thread-4 (]: SQL status: OK in 0.019 seconds
+[0m20:27:03.407484 [debug] [Thread-1 (]: SQL status: OK in 0.019 seconds
+[0m20:27:03.410210 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:03.412084 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: Close
+[0m20:27:03.413157 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.fact_orders"} */
+drop table if exists "swiggy"."main"."fact_orders__dbt_backup" cascade
+[0m20:27:03.415421 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa481cea10>]}
+[0m20:27:03.417400 [info ] [Thread-1 (]: 5 of 5 OK created sql table model main.dim_restaurants ......................... [[32mOK[0m in 0.37s]
+[0m20:27:03.418276 [debug] [Thread-4 (]: SQL status: OK in 0.002 seconds
+[0m20:27:03.419027 [debug] [Thread-1 (]: Finished running node model.swiggy_analytics.dim_restaurants
+[0m20:27:03.421042 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: Close
+[0m20:27:03.479923 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '534329a4-05c2-4ea9-8b58-8212748b0f23', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa48391c10>]}
+[0m20:27:03.482550 [info ] [Thread-4 (]: 4 of 5 OK created sql table model main.fact_orders ............................. [[32mOK[0m in 0.44s]
+[0m20:27:03.484443 [debug] [Thread-4 (]: Finished running node model.swiggy_analytics.fact_orders
+[0m20:27:03.488622 [debug] [MainThread]: Using duckdb connection "master"
+[0m20:27:03.490470 [debug] [MainThread]: On master: BEGIN
+[0m20:27:03.491937 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m20:27:03.762975 [debug] [MainThread]: SQL status: OK in 0.271 seconds
+[0m20:27:03.764392 [debug] [MainThread]: On master: COMMIT
+[0m20:27:03.765454 [debug] [MainThread]: Using duckdb connection "master"
+[0m20:27:03.766376 [debug] [MainThread]: On master: COMMIT
+[0m20:27:03.767879 [debug] [MainThread]: SQL status: OK in 0.000 seconds
+[0m20:27:03.768925 [debug] [MainThread]: On master: Close
+[0m20:27:03.774189 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:27:03.775480 [debug] [MainThread]: Connection 'list_swiggy_main' was properly closed.
+[0m20:27:03.776418 [debug] [MainThread]: Connection 'model.swiggy_analytics.dim_restaurants' was properly closed.
+[0m20:27:03.777411 [debug] [MainThread]: Connection 'model.swiggy_analytics.silver_orders' was properly closed.
+[0m20:27:03.778294 [debug] [MainThread]: Connection 'model.swiggy_analytics.silver_restaurants' was properly closed.
+[0m20:27:03.779272 [debug] [MainThread]: Connection 'model.swiggy_analytics.fact_orders' was properly closed.
+[0m20:27:03.780368 [info ] [MainThread]: 
+[0m20:27:03.781532 [info ] [MainThread]: Finished running 5 table models in 0 hours 0 minutes and 3.43 seconds (3.43s).
+[0m20:27:03.783454 [debug] [MainThread]: Command end result
+[0m20:27:03.825244 [debug] [MainThread]: Wrote artifact WritableManifest to /home/jovyan/work/04_transform/target/manifest.json
+[0m20:27:03.832401 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/jovyan/work/04_transform/target/semantic_manifest.json
+[0m20:27:03.847239 [debug] [MainThread]: Wrote artifact RunExecutionResult to /home/jovyan/work/04_transform/target/run_results.json
+[0m20:27:03.849146 [info ] [MainThread]: 
+[0m20:27:03.850803 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:27:03.851959 [info ] [MainThread]: 
+[0m20:27:03.853168 [info ] [MainThread]: Done. PASS=5 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=5
+[0m20:27:03.855582 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 5.8429713, "process_in_blocks": "290024", "process_kernel_time": 2.349624, "process_mem_max_rss": "185848", "process_out_blocks": "0", "process_user_time": 14.283975}
+[0m20:27:03.858477 [debug] [MainThread]: Command `dbt run` succeeded at 20:27:03.858108 after 5.85 seconds
+[0m20:27:03.859954 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa50566750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa2a7cbb50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7faa5058df50>]}
+[0m20:27:03.861245 [debug] [MainThread]: Flushing usage events
+[0m20:27:05.033340 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m20:27:10.295321 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7147a3c57410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7147a3c57750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7147a3c57010>]}
+
+
+============================== 20:27:10.298803 | 29b6027a-21fa-472e-9fb1-938430e215c7 ==============================
+[0m20:27:10.298803 [info ] [MainThread]: Running with dbt=1.11.15
+[0m20:27:10.299910 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'empty': 'False', 'use_experimental_parser': 'False', 'log_format': 'default', 'use_colors': 'True', 'debug': 'False', 'no_print': 'None', 'warn_error': 'None', 'introspect': 'True', 'partial_parse': 'True', 'indirect_selection': 'eager', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True', 'target_path': 'None', 'fail_fast': 'False', 'printer_width': '80', 'invocation_command': 'dbt run --profiles-dir .', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'profiles_dir': '.', 'log_path': '/home/jovyan/work/04_transform/logs', 'log_cache_events': 'False', 'cache_selected_only': 'False', 'quiet': 'False'}
+[0m20:27:10.531328 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7147a3a53510>]}
+[0m20:27:10.592142 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7147a61cc6d0>]}
+[0m20:27:10.594279 [info ] [MainThread]: Registered adapter: duckdb=1.8.2
+[0m20:27:10.659677 [debug] [MainThread]: checksum: 810725a07b286a161cb6a02f5214572f3ba8aa5d584b5e37ea30d4a281c3d3a5, vars: {}, profile: , target: , version: 1.11.15
+[0m20:27:10.815443 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m20:27:10.817152 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m20:27:10.818482 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m20:27:10.850871 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71479be93650>]}
+[0m20:27:10.931296 [debug] [MainThread]: Wrote artifact WritableManifest to /home/jovyan/work/04_transform/target/manifest.json
+[0m20:27:10.937722 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/jovyan/work/04_transform/target/semantic_manifest.json
+[0m20:27:10.959323 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71479bfbfd90>]}
+[0m20:27:10.963220 [info ] [MainThread]: Found 5 models, 467 macros
+[0m20:27:10.965739 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71479bf2bad0>]}
+[0m20:27:10.969636 [info ] [MainThread]: 
+[0m20:27:10.971352 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m20:27:10.972738 [info ] [MainThread]: 
+[0m20:27:10.974219 [debug] [MainThread]: Acquiring new duckdb connection 'master'
+[0m20:27:10.982408 [debug] [ThreadPool]: Acquiring new duckdb connection 'list_swiggy'
+[0m20:27:11.087021 [debug] [ThreadPool]: Using duckdb connection "list_swiggy"
+[0m20:27:11.088494 [debug] [ThreadPool]: On list_swiggy: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "connection_name": "list_swiggy"} */
+
+    
+    select schema_name
+    from system.information_schema.schemata
+    
+    where catalog_name = '"swiggy"'
+    
+  
+  
+[0m20:27:11.089685 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:27:11.306728 [debug] [ThreadPool]: SQL status: OK in 0.217 seconds
+[0m20:27:11.309206 [debug] [ThreadPool]: On list_swiggy: Close
+[0m20:27:11.314388 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_swiggy, now create_swiggy_main)
+[0m20:27:11.315720 [debug] [ThreadPool]: Creating schema "database: "swiggy"
+schema: "main"
+"
+[0m20:27:11.323062 [debug] [ThreadPool]: Using duckdb connection "create_swiggy_main"
+[0m20:27:11.324314 [debug] [ThreadPool]: On create_swiggy_main: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "connection_name": "create_swiggy_main"} */
+
+    
+        select type from duckdb_databases()
+        where database_name='swiggy'
+        and type='sqlite'
+    
+  
+[0m20:27:11.325263 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m20:27:11.537986 [debug] [ThreadPool]: SQL status: OK in 0.213 seconds
+[0m20:27:11.540943 [debug] [ThreadPool]: Using duckdb connection "create_swiggy_main"
+[0m20:27:11.542174 [debug] [ThreadPool]: On create_swiggy_main: BEGIN
+[0m20:27:11.543882 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m20:27:11.545661 [debug] [ThreadPool]: Using duckdb connection "create_swiggy_main"
+[0m20:27:11.546779 [debug] [ThreadPool]: On create_swiggy_main: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "connection_name": "create_swiggy_main"} */
+
+    
+    
+        create schema if not exists "swiggy"."main"
+    
+[0m20:27:11.548342 [debug] [ThreadPool]: SQL status: OK in 0.001 seconds
+[0m20:27:11.550001 [debug] [ThreadPool]: On create_swiggy_main: COMMIT
+[0m20:27:11.551074 [debug] [ThreadPool]: Using duckdb connection "create_swiggy_main"
+[0m20:27:11.552057 [debug] [ThreadPool]: On create_swiggy_main: COMMIT
+[0m20:27:11.553498 [debug] [ThreadPool]: SQL status: OK in 0.000 seconds
+[0m20:27:11.554426 [debug] [ThreadPool]: On create_swiggy_main: Close
+[0m20:27:11.559301 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly create_swiggy_main, now list_swiggy_main)
+[0m20:27:11.566184 [debug] [ThreadPool]: Using duckdb connection "list_swiggy_main"
+[0m20:27:11.567380 [debug] [ThreadPool]: On list_swiggy_main: BEGIN
+[0m20:27:11.568258 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m20:27:11.786149 [debug] [ThreadPool]: SQL status: OK in 0.218 seconds
+[0m20:27:11.787606 [debug] [ThreadPool]: Using duckdb connection "list_swiggy_main"
+[0m20:27:11.788995 [debug] [ThreadPool]: On list_swiggy_main: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "connection_name": "list_swiggy_main"} */
+select
+      'swiggy' as database,
+      table_name as name,
+      table_schema as schema,
+      CASE table_type
+        WHEN 'BASE TABLE' THEN 'table'
+        WHEN 'VIEW' THEN 'view'
+        WHEN 'LOCAL TEMPORARY' THEN 'table'
+        END as type
+    from system.information_schema.tables
+    where table_schema = 'main'
+    and table_catalog = 'swiggy'
+  
+[0m20:27:11.833334 [debug] [ThreadPool]: SQL status: OK in 0.043 seconds
+[0m20:27:11.836485 [debug] [ThreadPool]: On list_swiggy_main: ROLLBACK
+[0m20:27:11.838666 [debug] [ThreadPool]: Failed to rollback 'list_swiggy_main'
+[0m20:27:11.840074 [debug] [ThreadPool]: On list_swiggy_main: Close
+[0m20:27:11.849186 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7147a030a710>]}
+[0m20:27:11.850750 [debug] [MainThread]: Using duckdb connection "master"
+[0m20:27:11.851885 [debug] [MainThread]: On master: BEGIN
+[0m20:27:11.853041 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:27:12.058002 [debug] [MainThread]: SQL status: OK in 0.205 seconds
+[0m20:27:12.059601 [debug] [MainThread]: On master: COMMIT
+[0m20:27:12.061280 [debug] [MainThread]: Using duckdb connection "master"
+[0m20:27:12.063117 [debug] [MainThread]: On master: COMMIT
+[0m20:27:12.064973 [debug] [MainThread]: SQL status: OK in 0.001 seconds
+[0m20:27:12.066268 [debug] [MainThread]: On master: Close
+[0m20:27:12.075287 [debug] [Thread-1 (]: Began running node model.swiggy_analytics.silver_historical_orders
+[0m20:27:12.076293 [debug] [Thread-2 (]: Began running node model.swiggy_analytics.silver_orders
+[0m20:27:12.077042 [debug] [Thread-3 (]: Began running node model.swiggy_analytics.silver_restaurants
+[0m20:27:12.079283 [info ] [Thread-1 (]: 1 of 5 START sql table model main.silver_historical_orders ..................... [RUN]
+[0m20:27:12.081207 [info ] [Thread-2 (]: 2 of 5 START sql table model main.silver_orders ................................ [RUN]
+[0m20:27:12.082519 [info ] [Thread-3 (]: 3 of 5 START sql table model main.silver_restaurants ........................... [RUN]
+[0m20:27:12.083881 [debug] [Thread-1 (]: Acquiring new duckdb connection 'model.swiggy_analytics.silver_historical_orders'
+[0m20:27:12.085172 [debug] [Thread-2 (]: Acquiring new duckdb connection 'model.swiggy_analytics.silver_orders'
+[0m20:27:12.086373 [debug] [Thread-3 (]: Acquiring new duckdb connection 'model.swiggy_analytics.silver_restaurants'
+[0m20:27:12.087878 [debug] [Thread-1 (]: Began compiling node model.swiggy_analytics.silver_historical_orders
+[0m20:27:12.089430 [debug] [Thread-2 (]: Began compiling node model.swiggy_analytics.silver_orders
+[0m20:27:12.090716 [debug] [Thread-3 (]: Began compiling node model.swiggy_analytics.silver_restaurants
+[0m20:27:12.101439 [debug] [Thread-1 (]: Writing injected SQL for node "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:12.105484 [debug] [Thread-2 (]: Writing injected SQL for node "model.swiggy_analytics.silver_orders"
+[0m20:27:12.113389 [debug] [Thread-3 (]: Writing injected SQL for node "model.swiggy_analytics.silver_restaurants"
+[0m20:27:12.151619 [debug] [Thread-1 (]: Began executing node model.swiggy_analytics.silver_historical_orders
+[0m20:27:12.153031 [debug] [Thread-3 (]: Began executing node model.swiggy_analytics.silver_restaurants
+[0m20:27:12.161943 [debug] [Thread-2 (]: Began executing node model.swiggy_analytics.silver_orders
+[0m20:27:12.309403 [debug] [Thread-1 (]: Writing runtime sql for node "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:12.313441 [debug] [Thread-3 (]: Writing runtime sql for node "model.swiggy_analytics.silver_restaurants"
+[0m20:27:12.315413 [debug] [Thread-2 (]: Writing runtime sql for node "model.swiggy_analytics.silver_orders"
+[0m20:27:12.326264 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:12.327722 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:12.334158 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: BEGIN
+[0m20:27:12.335378 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:12.337105 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: BEGIN
+[0m20:27:12.339285 [debug] [Thread-1 (]: Opening a new connection, currently in state init
+[0m20:27:12.342078 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: BEGIN
+[0m20:27:12.345491 [debug] [Thread-2 (]: Opening a new connection, currently in state init
+[0m20:27:12.349922 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m20:27:12.615838 [debug] [Thread-3 (]: SQL status: OK in 0.266 seconds
+[0m20:27:12.616725 [debug] [Thread-2 (]: SQL status: OK in 0.272 seconds
+[0m20:27:12.617351 [debug] [Thread-1 (]: SQL status: OK in 0.278 seconds
+[0m20:27:12.618569 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:12.619938 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:12.621388 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:12.622755 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_restaurants"} */
+
+  
+    
+    
+
+    create  table
+      "swiggy"."main"."silver_restaurants__dbt_tmp"
+  
+    as (
+      
+
+WITH raw_rest AS (
+    SELECT * FROM delta_scan('../data/delta_lake/bronze/restaurants')
+)
+SELECT 
+    restaurant_id,
+    name,
+    cuisine_type,
+    city,
+    CAST(avg_rating AS DOUBLE) as avg_rating,
+    is_active
+FROM raw_rest
+    );
+  
+  
+[0m20:27:12.624200 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_orders"} */
+
+  
+    
+    
+
+    create  table
+      "swiggy"."main"."silver_orders__dbt_tmp"
+  
+    as (
+      
+
+WITH raw_orders AS (
+    SELECT * FROM delta_scan('../data/delta_lake/bronze/orders')
+),
+deduplicated AS (
+    SELECT 
+        *,
+        ROW_NUMBER() OVER(PARTITION BY order_id ORDER BY timestamp DESC) as rn
+    FROM raw_orders
+)
+SELECT 
+    event_id,
+    event_type,
+    CAST(timestamp AS TIMESTAMP) AS event_timestamp,
+    order_id,
+    customer_id,
+    restaurant_id,
+    total_amount,
+    status,
+    delivery_address
+FROM deduplicated
+WHERE rn = 1
+    );
+  
+  
+[0m20:27:12.625727 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_historical_orders"} */
+
+  
+    
+    
+
+    create  table
+      "swiggy"."main"."silver_historical_orders__dbt_tmp"
+  
+    as (
+      
+
+WITH historical AS (
+    SELECT * FROM delta_scan('../data/delta_lake/bronze/historical_orders')
+)
+SELECT 
+    order_id,
+    customer_id,
+    restaurant_id,
+    status,
+    CAST(total_amount AS DOUBLE) as total_amount,
+    delivery_address,
+    CAST(placed_at AS TIMESTAMP) as event_timestamp
+FROM historical
+    );
+  
+  
+[0m20:27:12.915215 [debug] [Thread-2 (]: SQL status: OK in 0.285 seconds
+[0m20:27:12.926417 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:12.927956 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_orders"} */
+alter table "swiggy"."main"."silver_orders" rename to "silver_orders__dbt_backup"
+[0m20:27:12.930969 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m20:27:12.936957 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:12.938423 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_orders"} */
+alter table "swiggy"."main"."silver_orders__dbt_tmp" rename to "silver_orders"
+[0m20:27:12.940819 [debug] [Thread-2 (]: SQL status: OK in 0.001 seconds
+[0m20:27:12.975894 [debug] [Thread-1 (]: SQL status: OK in 0.344 seconds
+[0m20:27:12.983471 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: COMMIT
+[0m20:27:12.988802 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:12.990505 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:12.992164 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_historical_orders"} */
+alter table "swiggy"."main"."silver_historical_orders" rename to "silver_historical_orders__dbt_backup"
+[0m20:27:12.996729 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: COMMIT
+[0m20:27:13.000242 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m20:27:13.009420 [debug] [Thread-3 (]: SQL status: OK in 0.382 seconds
+[0m20:27:13.013671 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:13.020442 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:13.021547 [debug] [Thread-2 (]: SQL status: OK in 0.019 seconds
+[0m20:27:13.022532 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_historical_orders"} */
+alter table "swiggy"."main"."silver_historical_orders__dbt_tmp" rename to "silver_historical_orders"
+[0m20:27:13.023926 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_restaurants"} */
+alter table "swiggy"."main"."silver_restaurants" rename to "silver_restaurants__dbt_backup"
+[0m20:27:13.031911 [debug] [Thread-2 (]: Using duckdb connection "model.swiggy_analytics.silver_orders"
+[0m20:27:13.033875 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m20:27:13.035285 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m20:27:13.035816 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_orders"} */
+drop table if exists "swiggy"."main"."silver_orders__dbt_backup" cascade
+[0m20:27:13.038681 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: COMMIT
+[0m20:27:13.043417 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:13.047125 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:13.048468 [debug] [Thread-2 (]: SQL status: OK in 0.003 seconds
+[0m20:27:13.049117 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_restaurants"} */
+alter table "swiggy"."main"."silver_restaurants__dbt_tmp" rename to "silver_restaurants"
+[0m20:27:13.050296 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: COMMIT
+[0m20:27:13.054035 [debug] [Thread-2 (]: On model.swiggy_analytics.silver_orders: Close
+[0m20:27:13.056425 [debug] [Thread-3 (]: SQL status: OK in 0.001 seconds
+[0m20:27:13.068530 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: COMMIT
+[0m20:27:13.069804 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71479ac60d50>]}
+[0m20:27:13.071041 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:13.073987 [info ] [Thread-2 (]: 2 of 5 OK created sql table model main.silver_orders ........................... [[32mOK[0m in 0.98s]
+[0m20:27:13.076481 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: COMMIT
+[0m20:27:13.079464 [debug] [Thread-2 (]: Finished running node model.swiggy_analytics.silver_orders
+[0m20:27:13.089489 [debug] [Thread-1 (]: SQL status: OK in 0.032 seconds
+[0m20:27:13.096621 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.silver_historical_orders"
+[0m20:27:13.097431 [debug] [Thread-3 (]: SQL status: OK in 0.015 seconds
+[0m20:27:13.098513 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_historical_orders"} */
+drop table if exists "swiggy"."main"."silver_historical_orders__dbt_backup" cascade
+[0m20:27:13.102975 [debug] [Thread-3 (]: Using duckdb connection "model.swiggy_analytics.silver_restaurants"
+[0m20:27:13.105911 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.silver_restaurants"} */
+drop table if exists "swiggy"."main"."silver_restaurants__dbt_backup" cascade
+[0m20:27:13.107106 [debug] [Thread-1 (]: SQL status: OK in 0.003 seconds
+[0m20:27:13.110613 [debug] [Thread-1 (]: On model.swiggy_analytics.silver_historical_orders: Close
+[0m20:27:13.113903 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71479acba210>]}
+[0m20:27:13.114746 [debug] [Thread-3 (]: SQL status: OK in 0.007 seconds
+[0m20:27:13.116263 [info ] [Thread-1 (]: 1 of 5 OK created sql table model main.silver_historical_orders ................ [[32mOK[0m in 1.03s]
+[0m20:27:13.119851 [debug] [Thread-3 (]: On model.swiggy_analytics.silver_restaurants: Close
+[0m20:27:13.121663 [debug] [Thread-1 (]: Finished running node model.swiggy_analytics.silver_historical_orders
+[0m20:27:13.188534 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71479ac93a50>]}
+[0m20:27:13.190794 [debug] [Thread-4 (]: Began running node model.swiggy_analytics.fact_orders
+[0m20:27:13.192047 [info ] [Thread-3 (]: 3 of 5 OK created sql table model main.silver_restaurants ...................... [[32mOK[0m in 1.10s]
+[0m20:27:13.193359 [info ] [Thread-4 (]: 4 of 5 START sql table model main.fact_orders .................................. [RUN]
+[0m20:27:13.195725 [debug] [Thread-3 (]: Finished running node model.swiggy_analytics.silver_restaurants
+[0m20:27:13.197459 [debug] [Thread-4 (]: Acquiring new duckdb connection 'model.swiggy_analytics.fact_orders'
+[0m20:27:13.199479 [debug] [Thread-1 (]: Began running node model.swiggy_analytics.dim_restaurants
+[0m20:27:13.200355 [debug] [Thread-4 (]: Began compiling node model.swiggy_analytics.fact_orders
+[0m20:27:13.201604 [info ] [Thread-1 (]: 5 of 5 START sql table model main.dim_restaurants .............................. [RUN]
+[0m20:27:13.207628 [debug] [Thread-4 (]: Writing injected SQL for node "model.swiggy_analytics.fact_orders"
+[0m20:27:13.209068 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.swiggy_analytics.silver_historical_orders, now model.swiggy_analytics.dim_restaurants)
+[0m20:27:13.210822 [debug] [Thread-1 (]: Began compiling node model.swiggy_analytics.dim_restaurants
+[0m20:27:13.215148 [debug] [Thread-1 (]: Writing injected SQL for node "model.swiggy_analytics.dim_restaurants"
+[0m20:27:13.219944 [debug] [Thread-4 (]: Began executing node model.swiggy_analytics.fact_orders
+[0m20:27:13.221122 [debug] [Thread-1 (]: Began executing node model.swiggy_analytics.dim_restaurants
+[0m20:27:13.225765 [debug] [Thread-4 (]: Writing runtime sql for node "model.swiggy_analytics.fact_orders"
+[0m20:27:13.230839 [debug] [Thread-1 (]: Writing runtime sql for node "model.swiggy_analytics.dim_restaurants"
+[0m20:27:13.237546 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:13.238681 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:13.239874 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: BEGIN
+[0m20:27:13.241024 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: BEGIN
+[0m20:27:13.242105 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m20:27:13.243256 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:27:13.467839 [debug] [Thread-1 (]: SQL status: OK in 0.224 seconds
+[0m20:27:13.468455 [debug] [Thread-4 (]: SQL status: OK in 0.226 seconds
+[0m20:27:13.469645 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:13.470918 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:13.472305 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.dim_restaurants"} */
+
+  
+    
+    
+
+    create  table
+      "swiggy"."main"."dim_restaurants__dbt_tmp"
+  
+    as (
+      
+
+SELECT 
+    restaurant_id,
+    name as restaurant_name,
+    cuisine_type,
+    city,
+    avg_rating,
+    is_active
+FROM "swiggy"."main"."silver_restaurants"
+    );
+  
+  
+[0m20:27:13.473721 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.fact_orders"} */
+
+  
+    
+    
+
+    create  table
+      "swiggy"."main"."fact_orders__dbt_tmp"
+  
+    as (
+      
+
+WITH stream_orders AS (
+    SELECT order_id, customer_id, restaurant_id, total_amount, status, event_timestamp, 'streaming' as source
+    FROM "swiggy"."main"."silver_orders"
+),
+batch_orders AS (
+    SELECT order_id, customer_id, restaurant_id, total_amount, status, event_timestamp, 'batch' as source
+    FROM "swiggy"."main"."silver_historical_orders"
+)
+SELECT * FROM stream_orders
+UNION ALL
+SELECT * FROM batch_orders
+    );
+  
+  
+[0m20:27:13.480984 [debug] [Thread-1 (]: SQL status: OK in 0.006 seconds
+[0m20:27:13.486072 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:13.489534 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.dim_restaurants"} */
+alter table "swiggy"."main"."dim_restaurants" rename to "dim_restaurants__dbt_backup"
+[0m20:27:13.491907 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m20:27:13.499229 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:13.499894 [debug] [Thread-4 (]: SQL status: OK in 0.024 seconds
+[0m20:27:13.500978 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.dim_restaurants"} */
+alter table "swiggy"."main"."dim_restaurants__dbt_tmp" rename to "dim_restaurants"
+[0m20:27:13.505156 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:13.507347 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.fact_orders"} */
+alter table "swiggy"."main"."fact_orders" rename to "fact_orders__dbt_backup"
+[0m20:27:13.507921 [debug] [Thread-1 (]: SQL status: OK in 0.001 seconds
+[0m20:27:13.509563 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m20:27:13.512466 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: COMMIT
+[0m20:27:13.517253 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:13.518560 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:13.519648 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.fact_orders"} */
+alter table "swiggy"."main"."fact_orders__dbt_tmp" rename to "fact_orders"
+[0m20:27:13.520827 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: COMMIT
+[0m20:27:13.522662 [debug] [Thread-4 (]: SQL status: OK in 0.001 seconds
+[0m20:27:13.526170 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: COMMIT
+[0m20:27:13.527740 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:13.529879 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: COMMIT
+[0m20:27:13.530703 [debug] [Thread-1 (]: SQL status: OK in 0.007 seconds
+[0m20:27:13.535599 [debug] [Thread-1 (]: Using duckdb connection "model.swiggy_analytics.dim_restaurants"
+[0m20:27:13.537122 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.dim_restaurants"} */
+drop table if exists "swiggy"."main"."dim_restaurants__dbt_backup" cascade
+[0m20:27:13.553147 [debug] [Thread-4 (]: SQL status: OK in 0.021 seconds
+[0m20:27:13.554253 [debug] [Thread-1 (]: SQL status: OK in 0.015 seconds
+[0m20:27:13.557239 [debug] [Thread-4 (]: Using duckdb connection "model.swiggy_analytics.fact_orders"
+[0m20:27:13.559467 [debug] [Thread-1 (]: On model.swiggy_analytics.dim_restaurants: Close
+[0m20:27:13.560641 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: /* {"app": "dbt", "dbt_version": "1.11.15", "profile_name": "swiggy_duckdb", "target_name": "dev", "node_id": "model.swiggy_analytics.fact_orders"} */
+drop table if exists "swiggy"."main"."fact_orders__dbt_backup" cascade
+[0m20:27:13.564933 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71478b742e50>]}
+[0m20:27:13.567377 [info ] [Thread-1 (]: 5 of 5 OK created sql table model main.dim_restaurants ......................... [[32mOK[0m in 0.36s]
+[0m20:27:13.568654 [debug] [Thread-4 (]: SQL status: OK in 0.003 seconds
+[0m20:27:13.569624 [debug] [Thread-1 (]: Finished running node model.swiggy_analytics.dim_restaurants
+[0m20:27:13.571676 [debug] [Thread-4 (]: On model.swiggy_analytics.fact_orders: Close
+[0m20:27:13.618384 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '29b6027a-21fa-472e-9fb1-938430e215c7', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x71479acc3bd0>]}
+[0m20:27:13.620316 [info ] [Thread-4 (]: 4 of 5 OK created sql table model main.fact_orders ............................. [[32mOK[0m in 0.42s]
+[0m20:27:13.622031 [debug] [Thread-4 (]: Finished running node model.swiggy_analytics.fact_orders
+[0m20:27:13.625004 [debug] [MainThread]: Using duckdb connection "master"
+[0m20:27:13.625968 [debug] [MainThread]: On master: BEGIN
+[0m20:27:13.626830 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m20:27:13.880112 [debug] [MainThread]: SQL status: OK in 0.253 seconds
+[0m20:27:13.881865 [debug] [MainThread]: On master: COMMIT
+[0m20:27:13.883032 [debug] [MainThread]: Using duckdb connection "master"
+[0m20:27:13.884085 [debug] [MainThread]: On master: COMMIT
+[0m20:27:13.885702 [debug] [MainThread]: SQL status: OK in 0.001 seconds
+[0m20:27:13.886972 [debug] [MainThread]: On master: Close
+[0m20:27:13.891923 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:27:13.893336 [debug] [MainThread]: Connection 'list_swiggy_main' was properly closed.
+[0m20:27:13.894325 [debug] [MainThread]: Connection 'model.swiggy_analytics.dim_restaurants' was properly closed.
+[0m20:27:13.895605 [debug] [MainThread]: Connection 'model.swiggy_analytics.silver_orders' was properly closed.
+[0m20:27:13.898331 [debug] [MainThread]: Connection 'model.swiggy_analytics.silver_restaurants' was properly closed.
+[0m20:27:13.899665 [debug] [MainThread]: Connection 'model.swiggy_analytics.fact_orders' was properly closed.
+[0m20:27:13.901196 [info ] [MainThread]: 
+[0m20:27:13.903059 [info ] [MainThread]: Finished running 5 table models in 0 hours 0 minutes and 2.93 seconds (2.93s).
+[0m20:27:13.906126 [debug] [MainThread]: Command end result
+[0m20:27:13.954003 [debug] [MainThread]: Wrote artifact WritableManifest to /home/jovyan/work/04_transform/target/manifest.json
+[0m20:27:13.961173 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/jovyan/work/04_transform/target/semantic_manifest.json
+[0m20:27:13.977011 [debug] [MainThread]: Wrote artifact RunExecutionResult to /home/jovyan/work/04_transform/target/run_results.json
+[0m20:27:13.979403 [info ] [MainThread]: 
+[0m20:27:13.981819 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:27:13.983505 [info ] [MainThread]: 
+[0m20:27:13.985374 [info ] [MainThread]: Done. PASS=5 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=5
+[0m20:27:13.988473 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 3.7628684, "process_in_blocks": "0", "process_kernel_time": 1.207858, "process_mem_max_rss": "182848", "process_out_blocks": "0", "process_user_time": 12.461852}
+[0m20:27:13.990219 [debug] [MainThread]: Command `dbt run` succeeded at 20:27:13.990024 after 3.76 seconds
+[0m20:27:13.991393 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7147a39fa410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7147a7d69510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7147a3c54910>]}
+[0m20:27:13.992532 [debug] [MainThread]: Flushing usage events
+[0m20:27:15.087006 [debug] [MainThread]: An error was encountered while trying to flush usage events

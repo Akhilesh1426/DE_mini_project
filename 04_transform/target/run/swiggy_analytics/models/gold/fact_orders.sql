@@ -1,10 +1,11 @@
 
+  
+    
     
 
     create  table
       "swiggy"."main"."fact_orders__dbt_tmp"
   
-    
     as (
       
 
@@ -20,5 +21,5 @@ SELECT * FROM stream_orders
 UNION ALL
 SELECT * FROM batch_orders
     );
-    
+  
   

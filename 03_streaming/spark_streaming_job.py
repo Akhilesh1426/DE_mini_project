@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import from_json, col, current_timestamp, when
+from pyspark.sql.functions import from_json, col, current_timestamp, when, to_json, struct
 from pyspark.sql.types import (
     StructType, StructField, StringType, DoubleType,
     BooleanType, ArrayType, IntegerType
@@ -92,8 +92,19 @@ dlq_query = dlq_stream.writeStream \
     .option("checkpointLocation", "data/spark_checkpoints/dlq") \
     .start(DLQ_PATH)
 
+# --- Write Bad Records to DLQ (Kafka) ---
+dlq_kafka_stream = dlq_stream.select(to_json(struct("*")).alias("value"))
+
+dlq_query_kafka = dlq_kafka_stream.writeStream \
+    .format("kafka") \
+    .option("kafka.bootstrap.servers", "redpanda:9092") \
+    .option("topic", "orders.dlq") \
+    .option("checkpointLocation", "data/spark_checkpoints/dlq_kafka") \
+    .start()
+
 print(f"[Streaming] Clean -> {BRONZE_PATH}")
-print(f"[Streaming] DLQ   -> {DLQ_PATH}")
+print(f"[Streaming] DLQ (Delta) -> {DLQ_PATH}")
+print(f"[Streaming] DLQ (Kafka) -> Topic: orders.dlq")
 print("[Streaming] Spark UI: http://localhost:4040")
 print("[Streaming] Awaiting stream termination... (Ctrl+C to stop)")
 

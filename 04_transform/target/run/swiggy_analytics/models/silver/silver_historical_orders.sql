@@ -1,10 +1,11 @@
 
+  
+    
     
 
     create  table
       "swiggy"."main"."silver_historical_orders__dbt_tmp"
   
-    
     as (
       
 
@@ -21,5 +22,5 @@ SELECT
     CAST(placed_at AS TIMESTAMP) as event_timestamp
 FROM historical
     );
-    
+  
   

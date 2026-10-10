@@ -1,10 +1,11 @@
 
+  
+    
     
 
     create  table
       "swiggy"."main"."dim_restaurants__dbt_tmp"
   
-    
     as (
       
 
@@ -17,5 +18,5 @@ SELECT
     is_active
 FROM "swiggy"."main"."silver_restaurants"
     );
-    
+  
   

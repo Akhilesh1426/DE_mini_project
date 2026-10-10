@@ -20,16 +20,17 @@ def get_producer():
             time.sleep(2)
 
 def generate_order_event():
-    event_types = ["order_placed", "order_updated", "order_delivered", "invalid_event"]
+    event_types = ["order_placed", "order_updated", "order_delivered"]
     statuses = ["PENDING", "PREPARING", "OUT_FOR_DELIVERY", "DELIVERED"]
     
-    # 20% chance of creating a corrupted record (missing order_id)
-    is_corrupted = random.random() < 0.2
+    # 10% chance of creating a corrupted record (missing order_id or invalid event type)
+    is_corrupted = random.random() < 0.10
     order_id = None if is_corrupted else f"ORD-{uuid.uuid4().hex[:6].upper()}"
+    event_type = "invalid_event" if is_corrupted else random.choice(event_types)
     
     return {
         "event_id": str(uuid.uuid4()),
-        "event_type": random.choice(event_types),
+        "event_type": event_type,
         "timestamp": datetime.utcnow().isoformat() + "Z",
         "order_id": order_id,
         "customer_id": f"CUST-{random.randint(1000, 9999)}",
