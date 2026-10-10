@@ -1,0 +1,9 @@
+swiggy_duckdb:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../data/duckdb/swiggy.db
+      extensions:
+        - delta
+      threads: 4

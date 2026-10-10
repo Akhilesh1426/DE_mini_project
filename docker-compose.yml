@@ -1,0 +1,70 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15.4
+    environment:
+      POSTGRES_DB: swiggy
+      POSTGRES_USER: swiggy_user
+      POSTGRES_PASSWORD: swiggy_pass
+    ports: ["5433:5432"]
+    deploy:
+      resources:
+        limits: {memory: 512m}
+
+  redpanda:
+    image: redpandadata/redpanda:v23.3.1
+    command:
+      - redpanda start
+      - --smp 1
+      - --memory 400M
+      - --reserve-memory 0M
+      - --overprovisioned
+      - --node-id 0
+      - --check=false
+      - --kafka-addr PLAINTEXT://0.0.0.0:9092
+      - --advertise-kafka-addr PLAINTEXT://redpanda:9092
+    ports: ["9092:9092", "8080:8080"]
+    deploy:
+      resources:
+        limits: {memory: 512m}
+
+  redpanda-console:
+    image: redpandadata/console:v2.4.3
+    environment:
+      KAFKA_BROKERS: redpanda:9092
+    ports: ["8081:8080"]
+    depends_on: [redpanda]
+    deploy:
+      resources:
+        limits: {memory: 256m}
+
+  jupyter:
+    image: jupyter/pyspark-notebook:latest
+    ports: ["8888:8888", "4040:4040", "8082:8080"]
+    volumes:
+      - .:/home/jovyan/work
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    deploy:
+      resources:
+        limits: {memory: 2048m}
+
+  superset:
+    image: apache/superset:3.1.0
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./data/duckdb:/app/duckdb_data
+      - ./data/delta_lake:/app/delta_lake
+    environment:
+      SUPERSET_SECRET_KEY: "swiggy_secret_key"
+      TALISMAN_ENABLED: "False"
+      SUPERSET_LOAD_EXAMPLES: "no"
+    command: >
+      bash -c "pip install duckdb-engine && superset fab create-admin --username admin --firstname Superset --lastname Admin --email admin@superset.com --password admin && superset db upgrade && superset init && superset run -p 8088 -h 0.0.0.0 --with-threads"
+    deploy:
+      resources:
+        limits: {memory: 1024m}
+
+

@@ -1,0 +1,10 @@
+kafka-python==3.0.11
+psycopg2-binary==2.9.9
+pyspark==3.5.1
+delta-spark==3.0.0
+duckdb==1.1.1
+dbt-duckdb==1.8.2
+apache-airflow==2.11.2
+pandas==2.2.2
+faker==24.0.0
+python-dotenv==1.0.1
