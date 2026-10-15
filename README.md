@@ -111,27 +111,30 @@ In high-throughput food delivery streams, malformed payloads (missing order IDs,
 ```text
 de_mini_proj/
 ├── 01_simulator/             # OLTP seeding & Postgres mock simulators
-│   ├── batch_seed_orders.py  # Generates realistic historical order receipts
-│   ├── export_raw_data.py    # Extracts transactional DB tables to CSV
+│   ├── batch_seed_orders.py  # Generates 1,000,000 realistic historical order receipts (weighted metros)
+│   ├── export_raw_data.py    # Extracts transactional DB tables to CSV & JSON
 │   ├── order_simulator.py    # Core synthetic order generator
 │   ├── schema.sql            # PostgreSQL DDL tables
-│   └── seed_data.py          # Master seed orchestrator for Postgres
+│   └── seed_data.py          # Seeds iconic Indian restaurants and metro customer bases
 ├── 02_ingestion/             # Lakehouse Bronze ingestion
-│   └── batch_ingestion.py    # PySpark script writing raw CSVs to Delta Lake
+│   └── batch_ingestion.py    # PySpark script writing raw CSVs to Delta Lake Bronze
 ├── 03_streaming/             # Real-time event processing
-│   ├── stream_producer.py    # Emits live order events with intentional bad data
-│   ├── spark_streaming_job.py# Spark Structured Streaming consumer & DLQ router
-│   ├── create_superset_views.py # Exposes Delta Lake tables to DuckDB via delta_scan
+│   ├── stream_producer.py    # Emits live order events with 10% intentional corrupted records
+│   ├── spark_streaming_job.py# Spark Structured Streaming consumer & dual DLQ router
+│   ├── create_superset_views.py # Exposes Delta Lake tables to DuckDB (live_orders, v_live_orders, live_dlq)
 │   ├── verify.py             # Quick verification script for Kafka / Delta counts
 │   └── windowed_aggregations.py # Tumbling & sliding window PySpark calculations
 ├── 04_transform/             # dbt transformations (DuckDB)
 │   ├── dbt_project.yml       # dbt project configurations
 │   ├── profiles.yml          # DuckDB connection profile
+│   ├── create_batch_views.py # Enriched 1M batch orders view (v_batch_orders)
 │   └── models/
 │       ├── silver/           # Cleansed models (silver_orders, silver_restaurants)
 │       └── gold/             # Dimensional models (fact_orders, dim_restaurants)
 ├── 05_orchestration/         # Workflow scheduling
 │   └── swiggy_batch_dag.py   # Airflow DAG (Extract -> PySpark Ingest -> dbt Run)
+├── scripts/                  # Container lifecycle & startup scripts
+│   └── start_jupyter_airflow.sh # Auto-initializes Airflow & launches webserver + scheduler on boot
 ├── data/                     # Local data mounts (git-ignored)
 │   ├── delta_lake/           # ACID Delta Lake tables (bronze, dlq)
 │   ├── duckdb/               # swiggy.db analytical database
@@ -167,37 +170,29 @@ docker compose ps
 | **Jupyter Lab** | `8888` | `8888` | `http://localhost:8888` |
 | **PostgreSQL** | `5433` | `5432` | `swiggy_user` / `swiggy_pass` / DB: `swiggy` |
 
+> [!NOTE]
+> **Airflow Auto-Start:** The `jupyter` container automatically removes stale PID files, ensures DAG symlinks, and boots up both the **Airflow Webserver** and **Scheduler** in the background. Tutorial examples are disabled so only `swiggy_batch_pipeline` appears.
+
 ---
 
-### 2. Initialize the Environment (Run once)
-Since we use a lightweight generic PySpark image to save RAM, you need to install the project dependencies and initialize the Airflow database on the first run. 
-Run these commands in your terminal:
+### 2. Prepare Storage Volume Link (Run Once)
+Create the directory mapping for DuckDB inside the container:
 ```bash
-# 1. Install Python dependencies inside the Jupyter container
-docker compose exec jupyter pip install -r /home/jovyan/work/requirements.txt
-
-# 2. Initialize Airflow and create an Admin user
-docker compose exec jupyter bash -c "airflow db init && airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin"
-
-# 3. Create a symlink so Airflow can find your DAGs
-docker compose exec jupyter bash -c "mkdir -p /home/jovyan/airflow && ln -sf /home/jovyan/work/05_orchestration /home/jovyan/airflow/dags"
-
-# 4. Create a symlink for DuckDB to access the Delta Lake volume correctly
 docker compose exec -u root jupyter bash -c "mkdir -p /app && ln -sf /home/jovyan/work/data/delta_lake /app/delta_lake"
-
-# 5. Start Airflow Webserver and Scheduler in the background
-docker compose exec -d jupyter airflow webserver
-docker compose exec -d jupyter airflow scheduler
 ```
 
-### 3. Seed the OLTP Database
-Populate PostgreSQL with the schema, synthetic restaurants, customers, and historical order data:
+---
+
+### 3. Seed the OLTP Database (1,000,000 Realistic Orders)
+Populate PostgreSQL with authentic Indian metros (Bangalore, Mumbai, Delhi NCR, Hyderabad, Pune, Chennai, Kolkata, Ahmedabad), iconic restaurant partners (*Meghana Foods, Truffles, Empire, Paradise Biryani, Haldiram's*), and 1,000,000 historical order receipts:
 ```bash
-# Apply Schema
+# 1. Apply Schema
 Get-Content 01_simulator\schema.sql | docker compose exec -T postgres psql -U swiggy_user -d swiggy
 
-# Seed Data
+# 2. Seed Restaurants & Customers
 docker compose exec jupyter python /home/jovyan/work/01_simulator/seed_data.py
+
+# 3. Fast Bulk Ingest 1,000,000 Orders (runs in ~40 seconds via COPY streaming)
 docker compose exec jupyter python /home/jovyan/work/01_simulator/batch_seed_orders.py
 ```
 
@@ -231,10 +226,16 @@ docker compose exec jupyter bash -c "cd /home/jovyan/work/04_transform && dbt ru
 
 ### 5. Run the Real-Time Streaming Pipeline
     
-#### Step 5.1: Start the Kafka Producer
-Stream live synthetic food orders into the `orders.events` Redpanda topic:
+#### Step 5.1: Real-Time Event Producer
+The stream producer (`03_streaming/stream_producer.py`) starts automatically in the background as soon as the Docker stack boots.
+
+To view live producer logs or restart manually:
 ```bash
-docker compose exec -d jupyter python /home/jovyan/work/03_streaming/stream_producer.py
+# View live producer logs:
+docker compose exec jupyter tail -f /home/jovyan/stream_producer.log
+
+# Or run manually in foreground if desired:
+docker compose exec jupyter python /home/jovyan/work/03_streaming/stream_producer.py
 ```
 *(You can monitor live messages entering the broker via Redpanda Console at [http://localhost:8081](http://localhost:8081))*
 
@@ -262,18 +263,23 @@ Connect Superset to DuckDB and explore the analytics:
 2. Connect Database:
    - **Database Type:** DuckDB
    - **SQLAlchemy URI:** `duckdb:////app/duckdb_data/swiggy.db`
-3. Available Datasets & Views:
-   - `swiggy.main.live_orders`: Real-time clean stream from Delta Lake.
-   - `swiggy.main.live_dlq`: Dead-letter queue stream for corrupted events.
-   - `swiggy.main.fact_orders`: Historical batch orders star schema.
-   - `swiggy.main.dim_restaurants`: Restaurant dimensional data.
+3. Available Datasets & Pre-joined Views:
+   - `swiggy.main.v_batch_orders`: Pre-joined 1M batch orders with restaurant attributes (`restaurant_name`, `city`, `cuisine`, `rating`). Ideal for city-wise revenue, cuisine popularity, and rating correlation charts.
+   - `swiggy.main.v_live_orders`: Real-time streaming orders from Delta Lake pre-joined with `dim_restaurants` for live metrics without manual SQL joins.
+   - `swiggy.main.live_dlq`: Dead-letter queue stream for corrupted events (`dlq_reason`, `raw_payload`).
+   - `swiggy.main.fact_orders` & `dim_restaurants`: Core dbt star-schema dimensional tables.
 
-#### Key Dashboard Metrics
-* **Live Revenue Tracker:** Time-series bar chart plotting `SUM(total_amount)` binned by minute using `ingested_at`.
-* **Orders per Minute:** Real-time throughput counter tracking platform traffic.
-* **Delivery Status Breakdown:** Pie / Donut chart showing distribution across `order_placed`, `order_updated`, `order_delivered`.
-* **Data Quality & DLQ Health:** Gauge tracking corrupted event percentages and bar chart breaking down failure causes (`dlq_reason`).
-* **Top Restaurants by Revenue:** Aggregated dimensional metrics joined with `dim_restaurants`.
+#### Key Dashboard Metrics & Tips
+* **Live Streaming Dashboard:**
+  * **Auto-refresh:** Set dashboard auto-refresh interval to `10 seconds` in the Superset top-right menu.
+  * **Time Range Filter:** Filter on `ingested_at` set to `Last 15 minutes` or `Last 30 minutes` for smooth real-time monitoring.
+  * **Orders per Minute & Live Revenue:** Big Number / Time-series bar charts tracking throughput and live GMV.
+  * **Delivery Status Breakdown:** Donut chart showing distribution across `order_placed`, `order_updated`, `order_delivered`.
+  * **Data Quality & DLQ Health:** Bar chart breaking down failure causes (`null_order_id`, `invalid_event_type`, `non_positive_amount`).
+* **Batch Analytics Dashboard:**
+  * **City-wise Revenue Distribution:** Mumbai, Bangalore, Delhi NCR, Hyderabad, etc.
+  * **Top Cuisines by Orders & Average Order Value (AOV)**.
+  * **Restaurant Rating vs. Order Volume Heatmap**.
 
 ---
 

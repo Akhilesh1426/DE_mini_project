@@ -21,8 +21,7 @@ dag = DAG(
 )
 
 def export_raw_data():
-    # Placeholder for the actual export script we wrote earlier
-    os.system("python /home/jovyan/work/05_orchestration/scripts/export_raw_data.py")
+    os.system("python /home/jovyan/work/01_simulator/export_raw_data.py")
 
 export_task = PythonOperator(
     task_id='export_raw_postgres_data',

@@ -5,16 +5,26 @@ from pyspark.sql.types import (
     BooleanType, ArrayType, IntegerType
 )
 
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BRONZE_PATH = os.path.join(BASE_DIR, "data", "delta_lake", "bronze", "orders")
+DLQ_PATH = os.path.join(BASE_DIR, "data", "delta_lake", "bronze", "dlq")
+CHECKPOINT_DIR = os.path.join(BASE_DIR, "data", "spark_checkpoints")
+
 # --- Spark Session ---
 spark = SparkSession.builder \
     .appName("SwiggyStreamingPipeline") \
     .master("local[2]") \
+    .config("spark.driver.memory", "512m") \
+    .config("spark.sql.shuffle.partitions", "2") \
+    .config("spark.default.parallelism", "2") \
     .config("spark.jars.packages",
             "io.delta:delta-spark_2.12:3.0.0,"
             "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.1") \
     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
-    .config("spark.sql.streaming.checkpointLocation", "data/spark_checkpoints") \
+    .config("spark.sql.streaming.checkpointLocation", os.path.join(CHECKPOINT_DIR, "default")) \
     .getOrCreate()
 
 spark.sparkContext.setLogLevel("WARN")
@@ -42,8 +52,6 @@ ORDER_SCHEMA = StructType([
 ])
 
 VALID_EVENT_TYPES = ["order_placed", "order_updated", "order_delivered"]
-BRONZE_PATH = "data/delta_lake/bronze/orders"
-DLQ_PATH = "data/delta_lake/bronze/dlq"
 
 # --- Read from Redpanda ---
 raw_stream = spark.readStream \
@@ -81,15 +89,17 @@ dlq_stream = parsed.filter(~is_valid).withColumn(
 clean_query = clean_stream.writeStream \
     .format("delta") \
     .outputMode("append") \
-    .option("checkpointLocation", "data/spark_checkpoints/bronze_orders") \
+    .option("checkpointLocation", os.path.join(CHECKPOINT_DIR, "bronze_orders")) \
     .partitionBy("status") \
+    .trigger(processingTime="10 seconds") \
     .start(BRONZE_PATH)
 
 # --- Write Bad Records to DLQ ---
 dlq_query = dlq_stream.writeStream \
     .format("delta") \
     .outputMode("append") \
-    .option("checkpointLocation", "data/spark_checkpoints/dlq") \
+    .option("checkpointLocation", os.path.join(CHECKPOINT_DIR, "dlq")) \
+    .trigger(processingTime="10 seconds") \
     .start(DLQ_PATH)
 
 # --- Write Bad Records to DLQ (Kafka) ---
@@ -99,7 +109,8 @@ dlq_query_kafka = dlq_kafka_stream.writeStream \
     .format("kafka") \
     .option("kafka.bootstrap.servers", "redpanda:9092") \
     .option("topic", "orders.dlq") \
-    .option("checkpointLocation", "data/spark_checkpoints/dlq_kafka") \
+    .option("checkpointLocation", os.path.join(CHECKPOINT_DIR, "dlq_kafka")) \
+    .trigger(processingTime="10 seconds") \
     .start()
 
 print(f"[Streaming] Clean -> {BRONZE_PATH}")

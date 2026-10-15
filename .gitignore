@@ -2,3 +2,8 @@
 __pycache__/
 *.pyc
 data/
+*.log
+04_transform/target/
+04_transform/logs/
+04_transform/.user.yml
+

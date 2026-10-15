@@ -2,13 +2,26 @@ import csv
 import json
 import psycopg2
 
+import os
+
 PG_CONFIG = {
-    "host": "127.0.0.1", "port": 5433,
+    "host": os.environ.get("POSTGRES_HOST", "postgres"),
+    "port": int(os.environ.get("POSTGRES_PORT", 5432)),
     "dbname": "swiggy", "user": "swiggy_user", "password": "swiggy_pass"
 }
 
+def get_connection():
+    try:
+        return psycopg2.connect(**PG_CONFIG)
+    except Exception:
+        fallback = dict(PG_CONFIG)
+        fallback["host"] = "127.0.0.1"
+        fallback["port"] = 5433
+        return psycopg2.connect(**fallback)
+
 def export_raw_data():
-    conn = psycopg2.connect(**PG_CONFIG)
+    os.makedirs("data/raw", exist_ok=True)
+    conn = get_connection()
     cur = conn.cursor()
     
     # Export restaurants to CSV

@@ -46,6 +46,10 @@ services:
       - .:/home/jovyan/work
     environment:
       JUPYTER_ENABLE_LAB: "yes"
+    depends_on:
+      - redpanda
+      - postgres
+    command: bash /home/jovyan/work/scripts/start_jupyter_airflow.sh
     deploy:
       resources:
         limits: {memory: 2048m}
